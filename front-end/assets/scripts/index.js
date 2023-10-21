@@ -150,27 +150,41 @@ directories = [
         return;
       }
       console.log(`senderName: ${senderName}\n senderEmail: ${senderEmail}\n message: ${message}`)
-      sendPostEmail(senderName, senderEmail, message);
-      document.getElementById("thank-you-message").innerHTML = "Thanks for your message. \nI'll get back to you shortly";
+      var tyMessage = "";
+      if (sendPostEmail(senderName, senderEmail, message) == true) {
+        tyMessage = "Thanks for your message. \nI'll get back to you shortly";
+      }
+      else {
+        tyMessage = "There was an error sending your message. \n Please Try Again";
+      }
+      document.getElementById("thank-you-message").innerHTML = tyMessage;
       document.getElementById('contact-form').style.display = 'none';
     });
   });
   
-  function sendPostEmail(senderName, senderEmail, message) {
-    fetch(API_BASE_URL, {
-    method: "POST",
-    body: JSON.stringify({
-      senderName: senderName,
-      senderEmail: senderEmail,
-      message: message
-    }),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
+  async function sendPostEmail(senderName, senderEmail, message) {
+    try {    
+      await fetch(API_BASE_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          senderName: senderName,
+          senderEmail: senderEmail,
+          message: message
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })
+      .then(response => response.text())
+        .then(text => {
+          // Display the return message here
+          document.querySelector('#return-message').textContent = text;
+        });
+      console.log("Success");
+      return true;
     }
-  })
-  .then(response => response.text())
-    .then(text => {
-      // Display the return message here
-      document.querySelector('#return-message').textContent = text;
-    });
+    catch {
+      console.log("Failure");
+      return false;
+    }
   }
