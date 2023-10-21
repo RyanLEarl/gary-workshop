@@ -3,7 +3,7 @@ Resources:
     Type: 'AWS::S3::Bucket'
     Properties:
       # AccessControl: PublicRead
-      BucketName: ryanearlsoftwareengineer.com
+      BucketName: gary-workshop
       PublicAccessBlockConfiguration: 
         BlockPublicAcls: false
         BlockPublicPolicy: false
