@@ -126,3 +126,36 @@ directories = [
     slides[slideIndex-1].style.display = "block";  
     dots[slideIndex-1].className += " active";
   }
+
+/* ******************************** CONTACT ******************************* */
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('contact-form').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const senderName = document.getElementById('name').value;
+      const senderEmail = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      console.log(`senderName: ${senderName}\n senderEmail: ${senderEmail}\n message: ${message}`)
+      sendPostEmail(senderName, senderEmail, message);
+      document.getElementById("thank-you-message").innerHTML = "Thanks for your message. \nI'll get back to you shortly";
+      document.getElementById('contact-form').style.display = 'none';
+    });
+  });
+  
+  function sendPostEmail(senderName, senderEmail, message) {
+    fetch(API_BASE_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      senderName: senderName,
+      senderEmail: senderEmail,
+      message: message
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  })
+  .then(response => response.text())
+    .then(text => {
+      // Display the return message here
+      document.querySelector('#return-message').textContent = text;
+    });
+  }
