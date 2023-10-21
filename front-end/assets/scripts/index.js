@@ -145,6 +145,10 @@ directories = [
         alert("All fields must be filled out");
         return;
       }
+      if (!senderEmail.includes("@")) {
+        alert("Must be a valid email format");
+        return;
+      }
       console.log(`senderName: ${senderName}\n senderEmail: ${senderEmail}\n message: ${message}`)
       sendPostEmail(senderName, senderEmail, message);
       document.getElementById("thank-you-message").innerHTML = "Thanks for your message. \nI'll get back to you shortly";
