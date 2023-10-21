@@ -12,7 +12,7 @@ exports.handler = async function (event) {
     console.log(`Email: ${senderEmail} \n Name: ${senderName} \n Message: ${message}`)
     const params = {
       Destination: {
-        ToAddresses: ["104herefishy@comcast.net"],
+        ToAddresses: ["ryanleoearl@gmail.com"],
       },
       Message: {
         Body: {
