@@ -26,7 +26,7 @@ directories = [
     var menu = document.createElement("div")
     nav.setAttribute("id", "nav")
     var name = document.createElement("a");
-    name.setAttribute("class", "companyName")
+    name.setAttribute("class", "logo")
     name.setAttribute("href", "/")
     name.innerHTML = "Gary's Workshop"
     nav.appendChild(name)
