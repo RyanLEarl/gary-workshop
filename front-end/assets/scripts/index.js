@@ -93,7 +93,7 @@ directories = [
     images = []
     console.log(directorySize);
     while (i<directorySize) {
-      images.push("/assets/Images/"+workTypeDirectory+"/"+i+".jpeg");
+      images.push("/assets/images/"+workTypeDirectory+"/"+i+".jpeg");
       i++;
     }
     loadCarouselImages(images);
