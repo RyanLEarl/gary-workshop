@@ -141,6 +141,10 @@ directories = [
       const senderName = document.getElementById('name').value;
       const senderEmail = document.getElementById('email').value;
       const message = document.getElementById('message').value;
+      if (!senderName || !senderEmail || !message) {
+        alert("All fields must be filled out");
+        return;
+      }
       console.log(`senderName: ${senderName}\n senderEmail: ${senderEmail}\n message: ${message}`)
       sendPostEmail(senderName, senderEmail, message);
       document.getElementById("thank-you-message").innerHTML = "Thanks for your message. \nI'll get back to you shortly";
