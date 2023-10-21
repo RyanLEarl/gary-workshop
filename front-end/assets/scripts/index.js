@@ -151,13 +151,17 @@ directories = [
       }
       console.log(`senderName: ${senderName}\n senderEmail: ${senderEmail}\n message: ${message}`)
       var tyMessage = "";
+      var tyMessageColor = "white";
       if (sendPostEmail(senderName, senderEmail, message) == true) {
         tyMessage = "Thanks for your message. \nI'll get back to you shortly";
+        tyMessageColor = "green";
       }
       else {
         tyMessage = "There was an error sending your message. \n Please Try Again";
+        tyMessageColor = "red";
       }
       document.getElementById("thank-you-message").innerHTML = tyMessage;
+      document.getElementById("thank-you-message").style.color = tyMessageColor;
       document.getElementById('contact-form').style.display = 'none';
     });
   });
