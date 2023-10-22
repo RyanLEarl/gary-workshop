@@ -146,7 +146,7 @@ directories = [
         return;
       }
       var regex = /\w+@\w+\.com/;
-      if (!regex.test(senderEmail)) { // Want to change to be more restrictive to a (.*?)(@)(.*?) format and require it to end in .com
+      if (!regex.test(senderEmail)) {
         alert("Must be a valid email format");
         return;
       }
