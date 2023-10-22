@@ -145,7 +145,8 @@ directories = [
         alert("All fields must be filled out");
         return;
       }
-      if (!senderEmail.includes("@")) {
+      var regex = /\w+@\w+\.com/;
+      if (!regex.test(senderEmail)) { // Want to change to be more restrictive to a (.*?)(@)(.*?) format and require it to end in .com
         alert("Must be a valid email format");
         return;
       }
@@ -157,11 +158,12 @@ directories = [
         tyMessageColor = "green";
       }
       else {
-        tyMessage = "There was an error sending your message. \n Please Try Again";
+        tyMessage = "There was an error sending your message. \n Please Refresh the Page and Try Again";
         tyMessageColor = "red";
       }
-      document.getElementById("thank-you-message").innerHTML = tyMessage;
-      document.getElementById("thank-you-message").style.color = tyMessageColor;
+      const messageData = document.getElementById("thank-you-message");
+      messageData.innerHTML = tyMessage;
+      messageData.style.color = tyMessageColor;
       document.getElementById('contact-form').style.display = 'none';
     });
   });
