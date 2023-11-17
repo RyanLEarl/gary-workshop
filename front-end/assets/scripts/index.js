@@ -12,6 +12,11 @@ directories = [
     'Metal',
     'Wood'
   ]
+  function toggleMenu() {
+    console.log('toggleMenu function called');
+    var navMenu = document.querySelector('.menu');
+    navMenu.classList.toggle('show');
+  }
   
   var getDirectories = directories;
   
@@ -32,6 +37,19 @@ directories = [
     name.setAttribute("href", "/")
     name.innerHTML = "Gary's Workshop"
     nav.appendChild(name)
+
+    var hamburgerMenu = document.createElement("button");
+    hamburgerMenu.setAttribute("class", "hamburger-menu");
+    hamburgerMenu.setAttribute("onclick", "toggleMenu()");
+  
+    for (var i = 0; i < 3; i++) {
+      var hamburgerLine = document.createElement("span");
+      hamburgerLine.setAttribute("class", "hamburger-line");
+      hamburgerMenu.appendChild(hamburgerLine);
+    }
+  
+    nav.appendChild(hamburgerMenu);  
+
     menu.setAttribute("class", "menu")
     for (i = 0; i<= getDirectories.length-1; i++) {
       var list = document.createElement("li");
