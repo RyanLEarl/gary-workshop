@@ -1,6 +1,8 @@
 :root {
   --text-color: #EEEEEE;
   --element-bg-color: #393E46;
+  --page-header-font-size: clamp(16px, calc(16px + 0.35vw), 32px);
+  --page-font-size: clamp(12px, calc(12px + 0.35vw), 24px);
 }
 
 /* ******************************** GENERAL ******************************* */
@@ -135,7 +137,7 @@
 }
 
 .logo {
-  font-size: clamp(16px, 3vw, 24px);
+  font-size: var(--page-header-font-size);
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 1px;
@@ -153,13 +155,13 @@ li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 18px;
+  padding: clamp(8px, 1vw, 14px) clamp(10px, 1vw, 18px);
   text-decoration: none;
 }
 .menu {
   display: flex;
-  gap: 1em;
-  font-size: 18px;
+  /* gap: 1em; */
+  font-size: var(--page-font-size);
 }
 .menu li:hover {
   background-color:#b7a285;
@@ -189,7 +191,7 @@ li a {
   background-color: var(--text-color);
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1000px) {
   .menu {
     display: none;
   }
